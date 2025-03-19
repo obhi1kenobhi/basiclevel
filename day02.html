@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .quiz-container { max-width: 600px; margin: auto; }
+        .question { margin-bottom: 15px; font-weight: bold; }
+        .options label { display: block; margin-bottom: 5px; }
+        .submit-btn { margin-top: 20px; padding: 10px; cursor: pointer; }
+        .result { margin-top: 20px; font-weight: bold; }
+        .correct-answer { background-color: lightgreen; }
+        .wrong-answer { background-color: lightcoral; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz</h1>
+        <form id="quiz-form">
+            <div id="questions"></div>
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        const questions = [
+    {
+        "question": "Energy consumption per unit of GDP is called as:",
+        "options": [
+            "Energy Ratio",
+            "Energy Intensity",
+            "Per Capita Consumption",
+            "None "
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Star rating is a part of ______ programme of BEE",
+        "options": [
+            "DSM",
+            "BLY",
+            "S&L",
+            "None "
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "As per IEGC (latest amendment) \u201cfrequency band\u201d in Hz is ",
+        "options": [
+            "49.90 \u2013 50.05",
+            "49.5 \u2013 50.3",
+            "49.7 \u2013 50.2",
+            "49.5 \u2013 50.2"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Action for non-compliance of IEGC  may be taken by",
+        "options": [
+            "Central Electricity Authority (CEA) on recommendation by RPC or RLDC",
+            "Regional Power Committee  (RPC) on report by RLDC ",
+            "Central Electricity Regulatory Commission(CERC) on report by RPC and RLDC only",
+            "Central Electricity Regulatory Commission(CERC) on report by any person or suo-motu"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": " A part of the grid can be deliberately isolated from the rest of the National/Regional grid, only",
+        "options": [
+            "under an emergency, or to prevent collapse of grid",
+            " for safety of human life",
+            "when serious damage to a costly equipment is imminent and such isolation would prevent it, ",
+            " All of these"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "As per IEGC, restricted governor mode of operation is to be implemented for generating stations synchronized with grid ( with exceptions mentioned in IEGC)  of the following category.",
+        "options": [
+            "All thermal generating units of 200 MW and above ",
+            "All hydro units (except those with upto three hours pondage) of 10 MW and above, ",
+            "Thermal units >=200MW and Hydro units >=10MW owned by central sector Generating companys",
+            "All coal/lignite based thermal generating units of 200MWand above, open cycle gas turbine/CCGT of capacity more than 50MW and all hydro units of 25MW and above"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "As per stipulations in IEGC, the control Area jurisdiction of any generating station ",
+        "options": [
+            "Can not change once decided",
+            "May be in one control area (i.e. SLDC) at one point of time and another control area (i.e. RLDC) at another point of time",
+            "As decided by RPC",
+            "As decided by RLDC"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "As per IEGC Var charges are applicable when ",
+        "options": [
+            " voltage at the metering point is below 97%",
+            "voltage is above103%. ",
+            " In case of voltage below 97% or greater than 103% at the metering point.",
+            "\u00a0 Voltage at metering point is below 95 % or above 105 %"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "If the state has a share of more than 50% in an IPP, then the scheduling and other functions shall be performed by-----",
+        "options": [
+            "SLDC",
+            "RLDC",
+            "Neither SLDC nor RLDC",
+            "Either SLDC or RLDC"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "If the state has a share of 50% or less in an IPP, then the scheduling and other functions shall be performed by-----",
+        "options": [
+            "SLDC",
+            "RLDC",
+            "Neither SLDC nor RLDC",
+            "Either SLDC or RLDC"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "A 'Bulk consumer' avails supply at :",
+        "options": [
+            " 220 kV and above",
+            "33 kV and above",
+            "132 kV and above",
+            "400 kV \nand above"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The maximum possible voltage unbalance in 33 to 132 kV shall be: ",
+        "options": [
+            0.02,
+            0.01,
+            0.03,
+            0.05
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "The total harmonic distortion in 33 to 132 kV system shall not exceed:",
+        "options": [
+            0.015,
+            0.02,
+            0.025,
+            0.05
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "The category GI-1 incident means no loss of Grid integrity at :",
+        "options": [
+            "132 kV",
+            "220 kV",
+            "400 kV",
+            "765 kV"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The category GD-2 disturbance means loss of  __ % generation or load in the region",
+        "options": [
+            "0 to 10",
+            "10 to 20",
+            "20 to 30",
+            "30 to 40"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "With reference to CEA's Grid Connectivity Standards, the preferable switching scheme for a 220 kV substation is: \n",
+        "options": [
+            "main and transfer scheme",
+            "double main and transfer scheme or double main with breaker by pass scheme",
+            "one and half breaker scheme or double main and transfer bus scheme",
+            "double bus double breaker scheme"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The maximum fault clearance time for system voltage of 220 kV is",
+        "options": [
+            "100 milliseconds",
+            "160 milliseconds",
+            "300 milliseconds",
+            "100 microseconds"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Maximum Continuious Rating is determined ",
+        "options": [
+            "after deducting station auxilary  load  on manufacturer guarented  rated MW",
+            "at the Genrator Terminals manufacturer guarented  rated MW ",
+            "after deducting station auxilary  load  on manufacturer guarented  average MW/day",
+            "at the Genrator Terminals manufacturer guarented  average MW/day"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The Generating transformer  windings   HV side  need to achieve Earth Fault Factor  of \u2026.  ",
+        "options": [
+            "1.0 or more",
+            "1.0 or less",
+            "1.4 or more",
+            "1.4 or less"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "The governers of thermal generating units shall have a  droop in the range of \u2026.",
+        "options": [
+            "0-5 %",
+            "5-8%",
+            "3-8%",
+            "3-6 %"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "The total Harmonic Distortion of a 11 kV consumer for current drawn from transmission system  at the connection point  shall not exceed \u2026",
+        "options": [
+            0.1,
+            0.05,
+            0.03,
+            0.08
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Generation is a \u2026\u2026 activity as per the Electricity Act 2003",
+        "options": [
+            "Licensed",
+            "Delicensed",
+            "Restricted",
+            "Commercial"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "On which of the following fields does the Study Committee C2 of the International council on Large Electric Systems (CIGRE)  deal with?",
+        "options": [
+            "Electricity Markets",
+            "Equipment Standardisation",
+            "Environmental Concerns",
+            "System Operation and Control"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "On which of the following fields does the Study Committee C5, of the International Council on Large Electric Systems (CIGRE)  deal with?",
+        "options": [
+            "Electricity Markets",
+            "Equipment Standardisation",
+            "Environmental Concerns",
+            "System Operation and Control"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "If the voltages at ends A & B of a transmission line are 200\u222030\u00ba kVand  220\u222015\u00bakV respectively then, _____",
+        "options": [
+            "MW flows from A to B",
+            "MW flows from B to A",
+            "No MW flows in the line",
+            "Can not be determined from the given data"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "The voltages at the two ends of a 400 kV line of 66 ohms reactance are 380\u22200\u00ba and 408\u22205\u00ba then steady state maximum power that can be transmitted in p.u is",
+        "options": [
+            6.06,
+            60.6,
+            23.49,
+            2.349
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "A long line having line reactor at one end should be charged from the end where there _________ line reactor.",
+        "options": [
+            "Is a",
+            "Is no",
+            "Either end",
+            "None of the above"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which option best describes the relation between Gross Station heat rate in a closed cycle operation and open cycle operation of a combined cycle gas station?",
+        "options": [
+            "GSHR in closed cycle is same as in open cycle",
+            "GSHR in closed cycle is greater than than in open cycle",
+            "GSHR in open cycle is greater than than in closed cycle",
+            "It depends on the unit size"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "The generator protection that is most likely to operate in a situation when there is \"HIGH Voltage\" and \"LOW Frequency\" in the grid:",
+        "options": [
+            "Low forward power",
+            "Overflux",
+            "Differential",
+            "Loss of field "
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What is the component which senses the frequency variations on the system and adjusts the MW output of the turbine generator called ?",
+        "options": [
+            "exciter",
+            "governor",
+            "OLTC",
+            "frequency relay"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "With reference to the turbine generator, the load angle is the phase angle difference between:",
+        "options": [
+            "rotor and stator",
+            "turbine and generator ",
+            "boiler and turbile",
+            "generator and transformer"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "When the load angle exceeds the maximum limit, then the power output of the generator will _____",
+        "options": [
+            "increase",
+            "decrease",
+            "remains constant",
+            "increases by 100%"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "In order that the frequency of the system remains constant, the electrical power output of the generator must be ___ the power required by the system load plus losses.",
+        "options": [
+            "greater than",
+            "less than ",
+            "equal to ",
+            "No relationship"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What is the response of the turbine-governor when there is a drop in load?",
+        "options": [
+            "The governor opens the turbine control valve to increase turbine input",
+            "The governor waits several minutes to see what happens",
+            "The governor closes the control valve position some what to decrease turbine input",
+            "None of \nthe above"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Two machines, 'A' & 'B' of equal capacity have speed droop settings of 3% and 6% respectively. How will they share an increase in load?",
+        "options": [
+            "Machine 'B' picks up large portion of load",
+            "Machine 'A' picks up large portion of load",
+            "Share the increase in load equally",
+            "Neither A nor B pick up the load"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Frequency response from loads is better in respect of: ",
+        "options": [
+            "Lighting load",
+            "Rotating loads",
+            "A combination of lighting loads and rotating loads",
+            "Silicon loads"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "A generating unit running at 50 Hz and its rated  capacity of 300 MW  has 3 % speed droop. What will be the value of frequency if the unit's output requirement is reduced to 200 MW? ",
+        "options": [
+            "50 Hz",
+            "49.5 Hz",
+            "50.5 Hz",
+            "51.0 Hz"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "If the system frequency is at 49.0 Hz then the RPM of a cylindrical rotor machine is ____ ",
+        "options": [
+            3000,
+            2940,
+            3060,
+            2880
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What is 'Load Rejection' ? ",
+        "options": [
+            "Under frequency Load shedding",
+            "Over frequency unit tripping",
+            "reduction in load with decrease in frequency",
+            "manual load shedding"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "A 200 MW unit with 3% governor droop reduces its output from 180 MW to 160 MW under FGMO when the change in frequency is ___.",
+        "options": [
+            "+0.15Hz",
+            "-0.15Hz",
+            "+0.3Hz",
+            "-0.3Hz"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Which of the following statements are correct:                       (i) Changing transformer taps change flow of VArs in the system.   \n(ii) Shunt capacitors generate VArs and shunt reactors absorb Vars.   \n(iii) Changing tap  settings affect the flow of MW.",
+        "options": [
+            "(i) & (iii)",
+            "(ii) & (iii)",
+            "(i), (ii) & (iii)",
+            "(i) & (ii)"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "The kVAr rating required for improving the power factor of a load operating at 500 kW and 0.85 power factor to 0.95 is ________. ",
+        "options": [
+            "145kVAr",
+            "500 kVAr ",
+            " 50 kVAr    ",
+            "300 kVAr "
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "The resultant transmission capacity of a line having a SIL of P0, a shunt compensation of Ksh and a series compensation of Kse, is: ",
+        "options": [
+            "P0*(1-ksh) / (1-Kse)",
+            "P0*(1-Kse) / (1-Ksh)",
+            "P0*Sqrt(1-Ksh) / Sqrt(1-Kse)",
+            "P0*Sqrt(1-Kse) / Sqrt(1-Ksh)"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "If a 40 MVAr reactor is connected at bus having 4000 MVA fault level and operating at 408 kV then the resultant bus voltage will be ",
+        "options": [
+            400,
+            404,
+            396,
+            412
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which is the most suitable condition for operating OLTC of a 400kV/220kV auto transformer?",
+        "options": [
+            "390kV/220 kV",
+            "410kV/201kV",
+            "420kV/225kV",
+            "380kV/180kV"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What do the SVC, CSR, UPFC, STATCOM devices control in common?",
+        "options": [
+            "Receiving end voltage",
+            "Load angle",
+            "Line reactance",
+            "Sending end voltage"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Protection against Over voltage stage-I setting in p.u. is:",
+        "options": [
+            1.1,
+            1.5,
+            0.95,
+            1.3
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Over flux alarm in a transformer is set at __ p.u.",
+        "options": [
+            1,
+            1.14,
+            0.9,
+            1.4
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Through Fault current is ___.",
+        "options": [
+            " The current flowing through a protected zone to a fault beyond that zone",
+            " The current flowing through a protected zone to a fault in the same zone",
+            "The current flowing through the protected device before fault",
+            "The post fault current flowing through the protected device "
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Match the device numbers: (a)Circuit Breaker (b) Over voltage relay (c) earth fault relay (d) under voltage relay :: (1)64; (2) 59; (3) 52; (4)27",
+        "options": [
+            "a-2; b-4; c- 1; d- 3;",
+            "a-3; b-1; c-2; d-4",
+            "a-3; b-2; c-1; d-4;",
+            "a-4;b-1;c-2;d-3"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "In the Master Station, packets are received by:",
+        "options": [
+            "RTU",
+            "PLC",
+            "Communication Front End",
+            "Operator Console "
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What is the system that provides the inter-connection of all the servers, workstation, peripherals with redundant ethernet switch? ",
+        "options": [
+            "WAN",
+            "LAN",
+            "DMZ",
+            "Ring main unit"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": " 'Milli seconds accurate time of status changes' for devices monitored, is provided by which application?",
+        "options": [
+            "Historical Data Recorder",
+            "Sequence of Events",
+            "Network Management System",
+            "Human Machine Interface"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of these is true for network modeling in SCADA ?",
+        "options": [
+            "Device Oriented model is used",
+            "SCADA analog measurements",
+            "SCADA digital measurements",
+            "All of the above"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "State Estimation algorithm is based upon:",
+        "options": [
+            "Weighted Least square Method",
+            "Newton Raphson Method",
+            "Decoupled Powerflow Method",
+            "Gauss-Siedel Method"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Fibre Optic Communication is based on: ",
+        "options": [
+            "Reflection of light",
+            "Total internal reflection of light",
+            "Refraction of light",
+            "Diffusion of light"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of these is not true for Fibre Optic medium?",
+        "options": [
+            "Higher bandwidth ",
+            "More susceptible to electromagnetic interference",
+            "Less signal degradation",
+            "Lighter and thinner than copper wire"
+        ],
+        "correct": "B"
+    }
+];
+
+        const questionContainer = document.getElementById("questions");
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+            questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            ["A", "B", "C", "D"].forEach((letter, i) => {
+                const label = document.createElement("label");
+                label.innerHTML = `<input type="radio" name="q${index}" value="${letter}" class="option-input"> ${q.options[i]}`;
+                label.setAttribute("data-correct", letter === q.correct ? "true" : "false");
+                optionsDiv.appendChild(label);
+            });
+
+            questionDiv.appendChild(optionsDiv);
+            questionContainer.appendChild(questionDiv);
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            document.querySelectorAll(".options label").forEach(label => label.classList.remove("correct-answer", "wrong-answer"));
+
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name=q${index}]:checked`);
+                const labels = document.querySelectorAll(`input[name=q${index}]`);
+
+                if (selected) {
+                    const selectedLabel = selected.parentNode;
+                    if (selected.value === q.correct) {
+                        score++;
+                        selectedLabel.classList.add("correct-answer");
+                    } else {
+                        selectedLabel.classList.add("wrong-answer");
+                    }
+                }
+
+                labels.forEach(label => {
+                    if (label.value === q.correct) {
+                        label.parentNode.classList.add("correct-answer");
+                    }
+                });
+            });
+
+            document.getElementById("result").innerText = `You scored ${score} out of ${questions.length}`;
+        }
+    </script>
+</body>
+</html>
