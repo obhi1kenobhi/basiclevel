@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../src/output.css" rel="stylesheet" />
+        <title>Day 05</title>
+        <style>
+            .quiz-container { max-width: 600px; margin: auto; }
+            .question { margin-bottom: 15px; font-weight: bold; }
+            .options label { display: block; margin-bottom: 5px; }
+            .submit-btn { margin-top: 20px; padding: 10px; cursor: pointer; }
+            .result { margin-top: 20px; font-weight: bold; }
+            .correct-answer { background-color: lightgreen; }
+            .wrong-answer { background-color: lightcoral; }
+        </style>
+    </head>
+    <body>
+        <div class="min-h-screen bg-gradient-to-br from-sky-400 to-teal-200 flex items-center justify-center px-4">
+        <div class="quiz-container">
+            <h1 class="text-5xl text-white font-extrabold drop-shadow-md px-4 py-8 text-center">Day 05 Quiz</h1>
+            <form id="quiz-form">
+                <div id="questions" class="text-md text-white drop-shadow-sm"></div>
+                <button type="button" class="submit-btn bg-white text-sky-600 font-semibold py-2 px-4 rounded-2xl shadow hover:bg-sky-100 transition" onclick="submitQuiz()">Submit</button>
+            </form>
+            <div id="result" class="result"></div>
+        </div>
+        </div>
+    <script>
+        const questions = [
+    {
+        "question": "In principle grant of connectivity by Nodal Agency , in case of requirement of ATS/Augmentation, is  accorded in _____  Days .",
+        "options": [
+            30,
+            60,
+            120,
+            180
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Connectivity Bank Guarantee shall have to be submitted by an applicant in _______ number of parts .",
+        "options": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Conn-BG3 to be furnished by the applicant after intimation of in-principle grant of Connectivity is _______ .",
+        "options": [
+            "Rs. 1 lakh/MW",
+            "Rs. 2 lakh/MW",
+            "Rs. 4 lakh/MW",
+            "Rs. 1 lakh/MW"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Conn-BG3 and Conn-BG2 shall be returned in equal parts over  ______ years corresponding to the generation  capacity which has been declared under commercial operation by the Connectivity grantee .",
+        "options": [
+            " Three",
+            "Five ",
+            "Seven",
+            "Ten"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "For seeking GNA to ISTS directly (not through STU) , the minimum requirement of load for distribution licenses or a bulk consumer is _______ .",
+        "options": [
+            "50 MW",
+            "100 MW",
+            "150 MW",
+            "None"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Grant of GNA by Nodal Agency to entities other than STU shall be acorded as per the following time lines in cases involving no augmentaion required and augmentation required are ______ .",
+        "options": [
+            "120, 180",
+            "60, 120",
+            "30, 60",
+            "30, 180"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "The notice period required for Relinquishment of Connectivity in full or in part is _______ .",
+        "options": [
+            "30 days ",
+            "3 Months",
+            "6 Months",
+            "1 Year"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "The Relinquishment charges in case of entities other than STU for Relinquishment of GNA shall be capped at _______ number of times the transmission charges last paid by the entity as per sharing regulation.",
+        "options": [
+            12,
+            24,
+            72,
+            84
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "T-GNA can be applied for a minimum period of _____ .",
+        "options": [
+            "one time block",
+            "1 hour",
+            "1 day",
+            "6 time blocks"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "T-GNA can be applied up to _______ .",
+        "options": [
+            "3 Months",
+            "1 Month",
+            "11 Months ",
+            "12 Months"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Advance apllication for grant of T-GNA can be made on the (D) day for grant of T-GNA starting on or after (D+3) day of _______ .",
+        "options": [
+            "Same Month",
+            "Subsequent Month",
+            "Either Same or Subsequent Month",
+            "None"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Advance Application for T-GNA shall be processed latest by 23.59 hours of _______ day , (D) being the date of making of application.",
+        "options": [
+            "D+7",
+            "D+15",
+            "D+30",
+            "D+1"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Nodal Agency for grant of T-GNA in case of bilateral transcations is _______",
+        "options": [
+            "NLDC",
+            "RLDC in which drawal point is situated",
+            "CTU",
+            "RLDC to which application is made"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": " T-GNA granted under advance category for a period not exceding 1 month can be revised with a notice period of a ______ .",
+        "options": [
+            "1 day",
+            "3 days",
+            "4 time blocks",
+            "cannot be revised"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "T-GNA granted under advance category for a period of more than one month can be revised for the balanced period, withy a prior notice of _______",
+        "options": [
+            "1 week",
+            "1 month",
+            "3 days",
+            "cannot be revised"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Transmission charge rate for T-GNA shall be published state wise for each month by _______.",
+        "options": [
+            "RPC",
+            "CERC",
+            "CEA",
+            "NLDC"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Transmission charge rate for T-GNA is published as _______ .",
+        "options": [
+            "Rs/MW/time block",
+            "Rs/MW/hour",
+            "paise/KWH",
+            "paise/KW/time block"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "In case of transmission constraints the cuirtailment of T-GNA transactions be done in following order .",
+        "options": [
+            "Bilateral, Collective under day ahead, Collective under real time market",
+            "Collective under day ahead, Bilateral, Collective under real time market",
+            "Collective under real time market, Collective under day ahead, Bilateral",
+            "All in pro-rata"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "The following entities are eligible to apply for grant of connectivity to ISTS.                                                                    (i) Standalone ESS with installed capacity of 40                          (ii) MW.Standalone ESS with installed capacity of 60 MW.                     (iii) Standalone ESS of 10 MW within aggregate installed capacity of 50 MW through Lead ESS.",
+        "options": [
+            "(ii) only",
+            "(iii) only",
+            "(ii) and (iii) ",
+            "All in pro-rata"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "The Following entities are eligible to apply for GNA.                       (i) Distribution lisencee with a load of 50 MW.                    (ii) STU on behalf of intra-State entity with a load of 40 MW.                                                                                                     (iii) Transmission licencee conected to ISTS.",
+        "options": [
+            " (i) only",
+            " (ii) only",
+            " (iii) only",
+            "All three"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "At what RMS voltage level is VARh recorded by SEM?",
+        "options": [
+            "More than 103% and less than 97%",
+            "less than 103% and more than 97%",
+            "At all voltage levels",
+            "None of the above"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Where are the main meters (SEM) installed in case of ISGS (Regional Entity) injection? ",
+        "options": [
+            "All GTs",
+            "All outgoing feeders",
+            "All GTs and Station Transformers",
+            "All Station transformers"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which part of ABT  is calculated / accounted for, by SEM?",
+        "options": [
+            "Energy Charge",
+            "Capacity Charge",
+            "Deviation charge ",
+            "Net input output charges"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "SEMs have two standard models with voltage and current ratings of ______",
+        "options": [
+            "110V,1A & 110V,5A",
+            "64V,1A & 64V,5A",
+            "110V,5A & 64V, 1A",
+            "110V,1A&64V,5A"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "For which of the following meters, the same core of CT & PT is used?",
+        "options": [
+            "Main & Standby Meter",
+            "Check & Standby Meters",
+            "Main & Check meters",
+            "Main, Check and Standby meters"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Through which device can limited time synchronization of SEM be done? ",
+        "options": [
+            "SEM itself",
+            "Data Collecting Device (DCD)",
+            "PC",
+            "GPS"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "As per IEGC, by when should the SEM data be sent to respective RLDCs every week?",
+        "options": [
+            "Tuesday noon",
+            "Thursday noon",
+            "Monday noon ",
+            "Sunday Noon"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Which meters are used in computation, in case of failure of Main meters ?",
+        "options": [
+            "Check meters first followed by standby if check is not available",
+            "Standby meters first followed by check if standby is not available",
+            "Wait for rectification of main meters",
+            "Average of check and stand by meters"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "For which of the following is Cumulative energy registered?",
+        "options": [
+            "Reactive High & Low energy",
+            "Active Energy",
+            "Active, Reactive High & Reactive Low energy",
+            "Only active energy"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What are SEMs used for energy accounting known as?",
+        "options": [
+            "Interface meters",
+            "Consumer meters",
+            "Energy Accounting meters",
+            "Audit Meters"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "400/220 kV ICT has got two meters, Meter-A & Meter-B installed at HV & LV side respectively. Which of the following statement is true?",
+        "options": [
+            "Meter-A is main meter & Meter-B is Check meter",
+            "Meter-A is main meter & Meter-B is standby meter",
+            "Meter-B is main meter & Meter-A is Check meter",
+            "Meter-A is check meter and Meter -B is standby Meter"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "How is collection of SEM data by DCD done under S/D condition of that particular feeder?",
+        "options": [
+            "Removing the meter & reconnecting in the lab",
+            "Using internal Battery backup",
+            "By giving external supply to the meter",
+            "Both B and C"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Bids on a constant volume in MWh/h at a certain price in a defined period of  consecutive hours, with a condition of \"all or none\" is known as, ____ ",
+        "options": [
+            "Single-interval bid",
+            "Portfolio bid",
+            "Block bid",
+            "Reserve bid"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "For Collective transactions,Transmision losses shall be absorbed  by",
+        "options": [
+            "Buyer of electricity only",
+            "Seller of electricity only",
+            "Buyer and Seller of electricity",
+            "Buyer or Seller of electricity"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Nodal agency for Collective Transactions is",
+        "options": [
+            "SLDC",
+            "RLDC",
+            "NLDC",
+            "CTU"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "One of the Salient feature of Power Exchange operation in India ",
+        "options": [
+            "Mandatory participation",
+            "Uniform pricing",
+            "Pay-as bid pricing",
+            "Single sided bidding"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Power Exchange(s) carry out congestion management in Day Ahead Market using",
+        "options": [
+            "Counter-trading",
+            "Market splitting",
+            "Explicit auction",
+            " redispatching"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The Day-ahead market in Power Exchange is ",
+        "options": [
+            "Capacity based market",
+            "Energy only market",
+            "Mix of Capacity based and Energy only market",
+            "None of these"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of the following most appropriately defines\"Term Ahead market\u201d ",
+        "options": [
+            "A market where physical delivery of electricity occurs more than one day (T + 2 or more) ahead from the date of transaction (T) ",
+            "A market where physical delivery of electricity  occurs either on the same day as the date of the transaction (T) or on the next day (T+ 1)",
+            "A market where physical delivery of electricity occurs more than two days(T + 3 or more) ahead from the date of transaction (T) ",
+            "more than four day (T + 5 or more) ahead from the date of transaction (T) "
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Which of the following represents a congestion management method where auctioning of the available inter-connector capacity is carried out and the capacity reservation is done on the basis of the highest bids received?",
+        "options": [
+            "Counter-trading",
+            "Market splitting",
+            "Re-dispatching",
+            "Explicit Auction"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Which type of Bidding Mechanism is prevalent for Day Ahead Market in a Power Exchange?",
+        "options": [
+            "single sided open auction",
+            "double sided open auction",
+            "single sided closed auction",
+            "double sided closed auction"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What is the relation between wind velocity and power?",
+        "options": [
+            "proportional to square of velocity  ",
+            "inversely proportional to cube of velocity  ",
+            "no relation at all  ",
+            "proportional to cube of velocity  "
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What is the definition of Penetration level of Wind source ?",
+        "options": [
+            "percentage wind energy  in design energy  ",
+            "percentage wind energy  in annual energy   ",
+            "percentage wind energy  in total energy of control Area.  ",
+            "percentage wind energy  in total energy of the country."
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "One REC is issued for an injection of ________ energy",
+        "options": [
+            "100MWh    ",
+            "100 kWh     ",
+            "1000MWh    ",
+            "1MWh  "
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What is the Pf range in which Wind generators are to operate?",
+        "options": [
+            "0.8 pf  lag to 0.9 pf lead   ",
+            "0.95pf lag to 0.95pf lead  ",
+            "0.8 lag to 0.8 pf  ",
+            "1pf lag and lead"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What is the minimum voltage at which WTG can disconnect under Fault Ride Through condition?",
+        "options": [
+            "below 10%  ",
+            "below 85%   ",
+            "below 15%   ",
+            "below "
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What is the short circuit contribution of WTG?",
+        "options": [
+            "Nil",
+            "it depends on direct connection or AC-DC-AC connection ",
+            "infinite",
+            "very less "
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What is the inertia contribution of type 4 (Full conversion) WTG?",
+        "options": [
+            "nil   ",
+            "very less   ",
+            "it depends on rotor winding  ",
+            "it depends on rotor mass"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "A Renewable Energy generator sells power of 1500 MWh to a Discom @ 3.50 ps/u a preferential rate fixed by the SERC.  How many Renewable Energy Certificates will the generator get?",
+        "options": [
+            1500,
+            1500000,
+            15,
+            "Nil"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Renewable Energy Certificates are traded at the Power Exchanges on",
+        "options": [
+            "every Wednesday of the month",
+            "every last Wednesday of the month",
+            "every day",
+            "every first Wednesday of the month"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of the following hydro generators are eligible for Renewable Energy Certificates?",
+        "options": [
+            "less than 25 MW",
+            "less than 10 MW",
+            "less than 1 MW",
+            "all hydro projects are eligible"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "What is the denomination of each REC issued?",
+        "options": [
+            "1 MWh",
+            "5 KWh",
+            "5MWh",
+            "1 KWh"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Which Agency has been designated as Central Agency  under REC Mechanism?",
+        "options": [
+            "SLDC",
+            "SERC",
+            "NLDC",
+            "Ministry of Power"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Accreditation and Registration under REC Mechanism  are valid for:",
+        "options": [
+            "3 Years",
+            "6 Months",
+            "5 Years",
+            "1 Year"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Which one of the following is the correct sequence of \u2018Process under REC Mechanism\u2019?",
+        "options": [
+            "Accreditation, Registration, Issuance, Redemption",
+            "Redemption, Issuance,Registration, Accreditation",
+            "Accreditation, Redemption, Issuance, Redemption",
+            "Issuance, Registration, Accreditation, Redemption "
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "RECs can be purchased by:",
+        "options": [
+            "Mandatory Buyers",
+            "Voluntary Buyers",
+            "Voluntary and Mandatory Buyers",
+            "Power Exchanges Only"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "All RE generators shall apply for issuance of REC within ---------- period of generation.",
+        "options": [
+            "1 month",
+            "2 months",
+            "3 months ",
+            "4 months"
+        ],
+        "correct": "nan"
+    },
+    {
+        "question": "NLDC Charges and Corporate Office Expenses shall be apportioned to RLDCs on the basis of __________",
+        "options": [
+            "no. of states in their jurisdiction",
+            "Demand served in the respective Region",
+            "Peak shortage in the respective region",
+            "Installed capacity in the respective region"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The One-time fees for registration of DISCOMs with RLDCs is _________",
+        "options": [
+            "15 lacs",
+            "10 lacs",
+            "20 lacs",
+            "8 lacs"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The one-time fees for registration of power exchanges with NLDC is _________",
+        "options": [
+            "15 lacs",
+            "10 lacs",
+            "20 lacs",
+            "8 lacs"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "The LDC Charges for the distribution licensees and buyers shall be determined on the basis of ",
+        "options": [
+            "(1/3) of annual charges",
+            "(1/2) of annual charges",
+            "(2/3) of annual charges",
+            "None of the Above"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "RLDCs or NLDC shall be be allowed to recover incentive of 15% of Annual LDC Charges for aggregate performance level of ",
+        "options": [
+            0.85,
+            0.9,
+            0.95,
+            1
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The employees of RLDC, NLDC & SLDC who acquire the certificate of basic level, specialist level and management level in their respective areas of specialization shall be allowed  retainer-ship amount /month(Rs) during the validity of such certificate period as ",
+        "options": [
+            "7500, 10000, 12000",
+            "7000, 10000, 12000",
+            "8500, 10000, 12000",
+            "6000, 7500, 10000"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "As per RLDC Fees & Charges Regulatuions, What is Late Payment surcharges/month applicable for delay in payment by RLDC users",
+        "options": [
+            0.01,
+            0.0125,
+            0.015,
+            0.0175
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "As per the CERC's Notification for RLDC Fees and Charges (Generating Stations + Sellers), (Distribution Licensees + Buyers) and Inetrstate Transmission Licensee share the Annual LDC Charges each at the rate of:",
+        "options": [
+            0.5,
+            0.3,
+            0.45,
+            0.3333
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "As per RLDC Fees & Charges Regulation 2019,  Generating station upto 10 MW installed capacity shall pay  fees for User registration of Rs",
+        "options": [
+            "0.10 Lac",
+            "0.50 Lac",
+            "1.0 Lac",
+            "2.0 Lac"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "As per RLDC Fees & Charges Regulation 2019,  Generating station having installed capacity of more than 2000 MW  shall pay  fees for User registration of Rs",
+        "options": [
+            "1.0 Lac",
+            "2.0 Lac",
+            "5.0 Lac",
+            "10.0 Lac"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "As per RLDC Fees & Charges Regulation 2019,  the inter-State trading licensees, sellers and buyers shall pay one time user registration fees of Rs.\n",
+        "options": [
+            "0.1 Lac",
+            "0.50 Lac",
+            "1.0 Lac",
+            "2.0 Lac"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "As per Fees & Charges regulation, What is the rebate allowed to user if payment is made within (T+5) days",
+        "options": [
+            0.01,
+            0.0125,
+            0.015,
+            0.02
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Services rendered by LDCs comprises of ___ ",
+        "options": [
+            "System Operation",
+            "Market Operation",
+            "Logistics",
+            "All of these"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What are the expenses identified under a separate head for the first time in the RLDC Fees and Charges order by CERC?",
+        "options": [
+            "Return on Equity",
+            "Interest on Loan",
+            "Depreciation",
+            "HR Expenses"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "As per RLDC Fees and Charges Regulation 2019, Which of the following source of income can not be deposited in Contingency Reserve Account",
+        "options": [
+            "Registration Fees",
+            "STOA application fees ",
+            "STOA operating charges",
+            " REC and PAT charges"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Any shortfall in meeting the revenue expenditure including HR expenses shall be met from\n",
+        "options": [
+            "LDCD Fund",
+            "PSDF Fund",
+            "SCED",
+            "Reactive Pool "
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Which of the following is/are the roles played by the System Operator in Electric Supply Industry in India?",
+        "options": [
+            "Agents for achieving economy and efficiency",
+            "Change agent for catalysing the ongoing reforms process",
+            "Agents for providing feedback to policy makers, planners and regulators",
+            "All of these roles"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Switching Operations are performed by: ",
+        "options": [
+            "ISO",
+            "TSO",
+            "Both ISO and TSO",
+            "Neither ISO nor TSO"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Maintenance of Transmission Assets is carried out by:",
+        "options": [
+            "ISO",
+            "TSO",
+            "Both ISO and TSO",
+            "Neither ISO nor TSO"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Who owns the Transmission assets ?",
+        "options": [
+            "ISO",
+            "TSO",
+            "Both ISO and TSO",
+            "Neither ISO nor TSO"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of the following is a statutory function ? ",
+        "options": [
+            "Generation",
+            "Transmission",
+            "Distribution",
+            "System Operation"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Which of the following DOES NOT discharge statutory functions?",
+        "options": [
+            "CTU",
+            "System Operators",
+            "Generation",
+            "STU"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "How many components are there in Annual LDC Charges for RLDC Fees & Charges",
+        "options": [
+            8,
+            7,
+            6,
+            5
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Protocols used for synchrophasor communication",
+        "options": [
+            "IEEE C37.118-2011",
+            "IEC 61850-90-5",
+            "IEEE C37.242-2013",
+            "both a &b"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Benefits of synchrophasor technology",
+        "options": [
+            "High resolution data",
+            "Time stamping",
+            "Direct Node Angle measurements ",
+            "All of these"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Which of the following signals available from a PMU?",
+        "options": [
+            "Analog Output",
+            "Analog Input",
+            "Digital Input & output",
+            "All of these"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "With reporting rate of PMU as 25 frames per second, what is the maximum oscillation frequency it can detect?",
+        "options": [
+            "25Hz",
+            "12.5Hz",
+            "6.25Hz",
+            "50Hz"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "The minimum number of satelites required for a PMU to   time stamp the phasor data",
+        "options": [
+            4,
+            3,
+            1,
+            5
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of these is not a function of PDC?",
+        "options": [
+            "Collecting data from PMU",
+            "Time allignment of data obtained from PMU",
+            "Time stamping of data arrived from PMU",
+            "Facilitating data to Historian"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Phasor Measurement Unit(PMU) shall report data in \u2026\u2026.. Interval.",
+        "options": [
+            "Microseconds",
+            "  Milliseconds",
+            "\u00a0\u00a0\u00a0\u00a0\u00a0 Nano Seconds",
+            "Second"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": " In which time format PMU Time stamping to phasor data is done?",
+        "options": [
+            " Coordinated Universal Time(UTC)",
+            " Indian Standard Time(IST)\n",
+            "Both a & b",
+            "Greenwich Mean Time (GMT)"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Wide Area Monitoring System (WAMS) can provide\u2026\u2026..  type of data",
+        "options": [
+            "Time aligned phasor data",
+            "Time Skewed data",
+            "Non simultaneous data",
+            "All of the above"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "In a typical PMU from which parameter Frequency is calculated?",
+        "options": [
+            "R Phase Voltage Angle",
+            "Positive Sequence voltage Angle",
+            "Positive Sequence Current Angle ",
+            "R Phase Current Angle"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": " Normally  Signal Sampling during Phasor Estimation in PMU  shall be in the range of \u2026",
+        "options": [
+            " 10Hz -50 Hz\n\n",
+            " In the order of kHz",
+            "50 Hz \u2013 100 Hz ",
+            "0-10 Hz"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Controls in Scada system are implemented using:",
+        "options": [
+            "Communication Channel",
+            "Remote Terminal Units (RTU)",
+            "Human Machine Interface(HMI)",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Which of these are components of Data Aquisition system?",
+        "options": [
+            "Sensors/transducers ",
+            "Communication Channel",
+            "Analog-to-digital converters",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Scada Functions are: ",
+        "options": [
+            "Data Acquisition",
+            "Data Processing",
+            "Alarms",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What is the system that provides the inter-connection of all the servers, workstation, peripherals with redundant ethernet switch? ",
+        "options": [
+            "WAN",
+            "LAN",
+            "DMZ",
+            "none of these options"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What is the system that monitors the interfaces to the SCADA/EMS servers, workstations, devices,  all SCADA/EMS gateway and routers and gathers performance statistics like resource utilisation?",
+        "options": [
+            "WAN",
+            "LAN",
+            "NMS",
+            "Operator Console "
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Which is not a protocol used  by RTU for communicating with control centre?",
+        "options": [
+            "Profibus",
+            "Modbus",
+            "CIM",
+            "IEC 60870-5-101 "
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Define the range of values that SCADA uses to determine whether the value retrieved for the analog is realistic.",
+        "options": [
+            "Normal limit",
+            "Reasonability Limit",
+            "Forbidden Limit",
+            "Dead band Limits"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which is the function that allows you to store time series of any set of analog, status, and accumulator SCADA measurements, as well as changes to limits on recorded analog measurements?",
+        "options": [
+            "Historical Data Management System",
+            "Network Management System",
+            "Operator Console",
+            "Human Machine Interface"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": " 'Milli seconds accurate time of status changes' for devices monitored, is provided by which application?",
+        "options": [
+            "Historical Data Recorder",
+            "Sequence of Events",
+            "Network Management System",
+            "Human Machine Interface"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Digital data is acquired in SCADA, ____",
+        "options": [
+            "Periodically",
+            "By Exception",
+            "Floating",
+            "none of these options"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "In general, what is the periodicity  of Analog data scan?",
+        "options": [
+            "Below 10 seconds",
+            "15 to 20 seconds",
+            "30 to 40 \nseconds",
+            "more than \n1 minute"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "What is the full form of RTU?",
+        "options": [
+            "Remote \nTelemetry Unit",
+            "Regional \nTelemetry Unit",
+            "Remote   \nTerminal Unit",
+            "Regional \nTerminal Unit"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "In PLCC what is the maximum speed of data transfer?",
+        "options": [
+            "100 kbps    ",
+            "500 kbps",
+            "1200 kbps",
+            "1000 kbps"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "If  a line flow crosses its raw high/low limits then data quality is _____",
+        "options": [
+            "Good",
+            "Suspect",
+            "Replace",
+            "None of the above"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of the following data can be retrieved from HDR ?",
+        "options": [
+            "Only Analog",
+            "Only Digital",
+            "Only Analog & Digital",
+            "none of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What  type of flag appears when data is uninitialised ?",
+        "options": [
+            "Good ",
+            "Suspect",
+            "Calculated",
+            "Garbage"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Remote Suspect means  value suspect at?",
+        "options": [
+            "Control center where RTU is reporting",
+            "Local Control center",
+            "Any where",
+            "none of these options"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "If the data is not retrieved in last scan it is marked as _____",
+        "options": [
+            "Over range",
+            "Bad",
+            "Uninitialized",
+            "none of these options"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "Which of these is not part of SLDC/RLDC SCADA system?    ",
+        "options": [
+            "Data Server",
+            "ISR server",
+            "Resource Server",
+            "ICCP server"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What is the advantage of  SCADA  system?",
+        "options": [
+            "Access the monitored system measurands both periodically and instantaneously",
+            "Display trends of the measurands over a span of time.",
+            "Initiates alarms for the abnormal states of devices.",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What are the components required for basic SCADA functions?",
+        "options": [
+            "Sensors, RTU",
+            "Communication network",
+            "SCADA master Station",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Which system is also known as one on one system?",
+        "options": [
+            "Single master Single remote",
+            "Single Master Multiple Remote",
+            "Multiple Master Multiple Remote",
+            "none of these options"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Breaker and switch status, Line analog parameters,Transformer analog parameters are the types of _____",
+        "options": [
+            "Distribution Data",
+            "Power Plant Data",
+            "Substation Data",
+            "System Operational Data"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "The MMI data presentation is basically _____ ",
+        "options": [
+            "visual",
+            " recorded",
+            " audible.",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Major source of telemetry  error in SCADA systems are ____",
+        "options": [
+            "Poor precision class of CT & PT",
+            "Non linearity in output of transducer",
+            "Poor precision class of CT & PT & Non linearity in output of transducer ",
+            "none of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "What are the basic instruments installed at site for measurement of voltage & current?",
+        "options": [
+            "Energy Meter",
+            "Wave Trap",
+            "CT & PT",
+            "Transducer"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Output of transducer is ______",
+        "options": [
+            "2-10 mA",
+            "4-30mA",
+            "4-20mA",
+            "0-9mA"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "RTU's are installed in Power System at ",
+        "options": [
+            "Transmission Line",
+            "Substations ",
+            "Control Centre",
+            "B & C"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "What does ISR stand for?",
+        "options": [
+            "Information Storage & Data Redundant system",
+            "Information Storage & Data Retrival system",
+            "Intelligent Storage & Data Retrival system",
+            "none of these options"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": " Which database is generally used in ISR server for storage of information?",
+        "options": [
+            "Oracle",
+            "Java",
+            "C++ ",
+            "MS Windows"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": " What does DMZ stand for?",
+        "options": [
+            "De-Magnetise Zone",
+            "De-Militarized Zone",
+            "De-Monitoring Zone",
+            "none of these options"
+        ],
+        "correct": "B"
+    },
+    {
+        "question": "What does telemetry refer to?",
+        "options": [
+            "Technique of receiving information or data",
+            "Technique of transfering information  or data",
+            "Technique of receiving information or data & Technique of transfering information  or data",
+            "none of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Data is transmitted through medium like:",
+        "options": [
+            "PLCC",
+            "VSAT",
+            "Optical Fibre",
+            "All of these options"
+        ],
+        "correct": "D"
+    },
+    {
+        "question": "Typical configuration of SCADA systems are:",
+        "options": [
+            "Point to point",
+            "Point to Multipoint ",
+            "Point to point & Point to Multipoint  ",
+            "none of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Historical data recording allows you to preseve time series of ____",
+        "options": [
+            "Analog",
+            "Digital",
+            "Analog & Digital",
+            "none of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "SCADA is defined as a\u2026\u2026\u2026\u2026\u2026..",
+        "options": [
+            "Process model",
+            "Logic Model",
+            "Intergration of Process Model & Logic Model",
+            "All of these options"
+        ],
+        "correct": "C"
+    },
+    {
+        "question": "Output of Trnasducer is connected to\u2026\u2026..",
+        "options": [
+            "Analog input in RTU",
+            "Digital input in RTU",
+            "C&R Pannel",
+            "All of these options"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "SCADA is called Supervisory because\u2026.",
+        "options": [
+            "It has in-direct control over the process",
+            "Direct control over the process",
+            "Loop Control",
+            "All of these options"
+        ],
+        "correct": "A"
+    },
+    {
+        "question": "Optical Fiber communication can be affected by\u2026.",
+        "options": [
+            "EMI",
+            "High Voltage",
+            "weather conditions",
+            "none of these options"
+        ],
+        "correct": "D"
+    }
+];
+
+        const questionContainer = document.getElementById("questions");
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+            questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+
+            ["A", "B", "C", "D"].forEach((letter, i) => {
+                const label = document.createElement("label");
+                label.innerHTML = `<input type="radio" name="q${index}" value="${letter}" class="option-input"> ${q.options[i]}`;
+                label.setAttribute("data-correct", letter === q.correct ? "true" : "false");
+                optionsDiv.appendChild(label);
+            });
+
+            questionDiv.appendChild(optionsDiv);
+            questionContainer.appendChild(questionDiv);
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            document.querySelectorAll(".options label").forEach(label => label.classList.remove("correct-answer", "wrong-answer"));
+
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name=q${index}]:checked`);
+                const labels = document.querySelectorAll(`input[name=q${index}]`);
+
+                if (selected) {
+                    const selectedLabel = selected.parentNode;
+                    if (selected.value === q.correct) {
+                        score++;
+                        selectedLabel.classList.add("correct-answer");
+                    } else {
+                        selectedLabel.classList.add("wrong-answer");
+                    }
+                }
+
+                labels.forEach(label => {
+                    if (label.value === q.correct) {
+                        label.parentNode.classList.add("correct-answer");
+                    }
+                });
+            });
+
+            document.getElementById("result").innerText = `You scored ${score} out of ${questions.length}`;
+        }
+    </script>
+</body>
+</html>
