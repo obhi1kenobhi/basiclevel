@@ -4030,7 +4030,7 @@ const randomgenerator = () => {
         questionDiv.appendChild(optionsDiv);
         questionContainer.appendChild(questionDiv);
     });
-    console.log(randomquestions);
+
 }
 
 
