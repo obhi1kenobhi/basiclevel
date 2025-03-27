@@ -1,2 +1,2 @@
 # Basic Level Question site
-Temporary repo for basic level questions. Repo will be deleted after March 31st.
+Temporary repo for basic level questions. Private after March 31st probably.
