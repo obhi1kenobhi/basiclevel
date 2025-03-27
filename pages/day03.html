@@ -24,7 +24,7 @@
                 <button type="button" class="submit-btn bg-white text-sky-600 font-semibold py-2 px-4 rounded-2xl shadow hover:bg-sky-100 transition" onclick="submitQuiz()">Submit</button>
                 <a href="../index.html"><button type="button" class="submit-btn bg-white text-sky-600 font-semibold py-2 px-4 rounded-2xl shadow hover:bg-sky-100 transition">Home</button></a>
             </form>
-            <div id="result" class="result"></div>
+            <div id="result" class="result text-md text-white font-extrabold drop-shadow-md px-4 py-8 text-center"></div>
         </div>
         </div>
     <script>
@@ -636,7 +636,7 @@
                     }
                 });
             });
-
+            document.getElementById("result").classList.add("bg-alertyellow", "text-red");
             document.getElementById("result").innerText = `You scored ${score} out of ${questions.length}`;
         }
     </script>

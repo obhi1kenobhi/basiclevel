@@ -11,9 +11,10 @@
     --color-sky-400: oklch(0.746 0.16 232.661);
     --color-sky-600: oklch(0.588 0.158 241.966);
     --clr-primary-a60: #afafaf;
-    --clr-primary-a70: #808080;
+    --clr-primary-a70: #fce35a;
     --clr-primary-a80: #545454;
     --color-white: #fff;
+    --color-red: rgb(250, 87, 65);
     --spacing: 0.25rem;
     --container-xl: 36rem;
     --text-sm: 0.875rem;
@@ -234,6 +235,9 @@
   .bg-white {
     background-color: var(--color-white);
   }
+  .bg-alertyellow {
+    background-color: var(--clr-primary-a70);
+  }
   .bg-gradient-to-br {
     --tw-gradient-position: to bottom right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
@@ -295,6 +299,9 @@
   }
   .text-white {
     color: var(--color-white);
+  }
+  .text-red {
+    color: var(--color-red);
   }
   .text-white\/70 {
     color: color-mix(in oklab, var(--color-white) 70%, transparent);

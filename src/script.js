@@ -4061,6 +4061,7 @@ function submitQuiz() {
             }
         });
     });
+    document.getElementById("result").classList.add("bg-alertyellow", "text-red");
     document.getElementById("result").innerText = `You scored ${score} out of ${randomquestions.length}`;
 }
 randombtn.addEventListener("click",randomgenerator);
