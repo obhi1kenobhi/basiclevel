@@ -4005,10 +4005,13 @@ const questionContainer = document.getElementById("questions");
 const submitbtn = document.getElementById("submit-btn");
 const randombtn = document.getElementById("random-btn");
 const descriptor = document.getElementById("description");
+const resultpane = document.getElementById("result");
 var randomquestions = [];
 
 const randomgenerator = () => {
     randomquestions = [];
+    resultpane.classList.remove("bg-alertyellow", "text-red");
+    resultpane.innerText = ``;
     for (let n = 0; n < 50; n++){
 
         randomquestions.push(questionbank[Math.floor(Math.random() * questionbank.length)]);
@@ -4061,8 +4064,8 @@ function submitQuiz() {
             }
         });
     });
-    document.getElementById("result").classList.add("bg-alertyellow", "text-red");
-    document.getElementById("result").innerText = `You scored ${score} out of ${randomquestions.length}`;
+    resultpane.classList.add("bg-alertyellow", "text-red");
+    resultpane.innerText = `You scored ${score} out of ${randomquestions.length}`;
 }
 randombtn.addEventListener("click",randomgenerator);
 submitbtn.addEventListener("click",submitQuiz);
