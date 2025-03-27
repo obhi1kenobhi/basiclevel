@@ -3428,6 +3428,576 @@ var questionbank = [
                 "None of the above"
             ],
             "correct": "A"
+        },
+        {
+            "question": "As per provisions of IEGC, STU  can not engage  in  ",
+            "options": [
+                "Planning and development of Inter-State Transmission System",
+                "Power Generation",
+                "Power Trading",
+                "Power Trading and Generation both "
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "As per IEGC, Under Frequency Relays (UFRs) are to be provided for ",
+            "options": [
+                "Day to Day Load shedding to mange Load by States/UTs",
+                "Preventing the grid from cascade tripping and  Grid Disintegration/ Grid Collapse",
+                "Protection of the Transmission Lines ",
+                "Protection of Transformers"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "As per IEGC, Regional grids are to  be operated as  power pools ",
+            "options": [
+                "With centralised scheduling by RLDCs",
+                "With centralized scheduling by RLDC and NLDC",
+                "with decentralized scheduling and despatch,",
+                "None of these"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Switching in/out of all 400 kV bus or line Reactors throughout the grid and  Tap changing on all 400/220 kV ICTs shall be done ",
+            "options": [
+                "As per RLDCs instructions only.",
+                "As per decision by respective transmission Utility",
+                "As per decision by CTU",
+                "Any time as per decision by CPCC"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "As per IEGC who is responsible for discharging all functions of planning and co-ordination relating to inter-State transmission system in co-ordination with various agencies ",
+            "options": [
+                "Regional Power Committee (RPC)",
+                " Regional Load Despatch Centre (RLDC)",
+                "Central Transmission Utility (CTU)",
+                " Central Electricity Authority (CEA)"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "As per IEGC, Automatic Under-Frequency and df/dt Relays for load shedding in their respective systems are to be provided by",
+            "options": [
+                "All SEBs, Distribution licensees and STUs",
+                "CTU and all STUs",
+                "Distribution licensees and STUs",
+                "CTU and all SEBs"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "After sheduling of forced outage of a unit under STOA, RLDC shall inform about the revised schedule to --------",
+            "options": [
+                "Seller",
+                "Buyer",
+                "Seller and Buyer",
+                "Either seller or Buyer"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Automatic Voltage Regulator with digital control shall be mandatory in the generating unit of above",
+            "options": [
+                "500MW",
+                "200 MW",
+                "100 MW",
+                "250 MW"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Grid Connectivity Standards make it mandatory to have \u2018two sets of batteries, each equipped with its own charger\u2019 for sub-stations of ",
+            "options": [
+                "220 kV and above",
+                "132 kV and above",
+                "66 kV and above",
+                "400 kV and above"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "Request for making connection to inter state transmission system is to be made to",
+            "options": [
+                "CTU",
+                "CEA",
+                "The licensee with whose system the inter-connection is proposed",
+                "CERC"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The limit specified for the power factor of the distribution system and bulk consumer is",
+            "options": [
+                "Not mentioned in CEA\u2019s technical standards",
+                "Not less than 0.95 ",
+                "Not less than 0.9",
+                "Not less than 0.85"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "AC Substations of 220 kV rating   Auxilary supply shall be arranged from   \u2026\u2026\u2026 independent sources  of High Tension(HT) feeders  ",
+            "options": [
+                "two",
+                "one ",
+                "one with two LT transformers",
+                "Three"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The governers of HYDRO generating units shall have a  droop of \u2026.",
+            "options": [
+                "5-10%",
+                "5-8%",
+                "4-6%",
+                "3-6%"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The penalty for non-compliance of CEA's Regulations can be imposed by ",
+            "options": [
+                "CEA",
+                "Appropriate Commission",
+                "Ministry of Power",
+                "Appellate Tribunal for Electricity"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "In a grid disturbance, generation loss is 19% but load loss is 22%. This grid disturbance will be classified as",
+            "options": [
+                "GD 3",
+                "GD 2",
+                "GD 20",
+                "Can't say"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "Mock exercises for fire fighting shall be conducted by the entities, ___",
+            "options": [
+                "once every 3 months",
+                "once every 6 months",
+                "once a year",
+                "once in 2 years"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "With reference to CEA's Grid Connectivity Standards, the preferable switching scheme for a 132 kV substation is:  ",
+            "options": [
+                "main and transfer scheme",
+                "double main and transfer scheme",
+                "one and half breaker scheme",
+                "double bus double breaker scheme"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The total harmonic distortion in 220 kV system shall not exceed:",
+            "options": [
+                "0.015",
+                "0.02",
+                "0.025",
+                "0.05"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "The maximum possible voltage unbalance in 400 and 765 kV shall be: ",
+            "options": [
+                "0.02",
+                "0.015",
+                "0.03",
+                "0.05"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The governor of a partially loaded generator senses that the frequency dipped from 50.0 to 49.9 Hz. As a result of governor action, the load angle of the machine will",
+            "options": [
+                "increase",
+                "decrease",
+                "remain constant",
+                "decrease by 10 degrees"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The reason that several generators on one bus of same capacity can operate at different power outputs while remaining interconnected and synchronised is that these are operating at different ____ ",
+            "options": [
+                "speeds",
+                "load angles",
+                "frequencies",
+                "voltages"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "To increase the power output from a generator, which one of the following actions should be performed?",
+            "options": [
+                "increase the terminal voltage",
+                "increase the excitation",
+                "Increase the power input to the prime mover",
+                "Increase the terminal voltage and increase the excitation"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "What possible problems could be caused by continous low frequency operation, say 48Hz on a 50Hz system?",
+            "options": [
+                "Gain of time on synchronous clocks",
+                "possible damage to turbine blades due to vibration at low speed",
+                "certain customers' equipment will run at higher than normal speed",
+                "None of these"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "If the speed droop of a 50Hz machine is 4%. What frequency drop must occur to effect a 25% load increase on that machine?",
+            "options": [
+                "2.0 Hz ",
+                "1.0 Hz",
+                "0.5 Hz",
+                "0.25Hz"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "If the system frequency is at 49.0 Hz then the RPM of a cylindrical rotor machine is ____ ",
+            "options": [
+                "3000",
+                "2940",
+                "3060",
+                "2880"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "Saturation of the core of a power transformer increases with ____ in frequency and _____ in voltage. ",
+            "options": [
+                "increase, decrease",
+                "increase, increase",
+                "decrease, decrease",
+                "decrease, increase"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "The kVAr rating required for improving the power factor of a load operating at 1000 kW and 0.8 power factor to 0.9 is ________. ",
+            "options": [
+                "100 kVAr",
+                "500 kVAr ",
+                " 50 kVAr    ",
+                "250 kVAr "
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "Which of the following is/are the function/s of the series compensation (TCSC) ?",
+            "options": [
+                "prevents the voltage collapse in heavily loaded lines",
+                "controls the power flow through parallel lines",
+                "controls the receiving end voltage",
+                "all of these"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "Match the FACTs controllers and their targets a)SVC,b)PST,c)TCSC::1)Load angle,2)Line reactance,3)Receiving end voltage",
+            "options": [
+                "a-1,b-3,c-2",
+                "a-3, b-1, c-2",
+                "a-2,b-3,c-1",
+                "a-3,b-2,c-1"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The transmission capacity of a transmission line with a SIL of P0 and a series compensation of Kse, is:",
+            "options": [
+                "P0/Sqrt(1-Kse)",
+                "P0*Sqrt(1-Kse)",
+                "P0 * (1-Kse)",
+                "P0/(1-Kse)"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The nearest kVAr compensation required for improving the power factor of a 500 kW load from 0.8 lag to unity power factor is ",
+            "options": [
+                "375 kVAr",
+                "100 kVAr ",
+                "500 kVAr ",
+                "250 KVAr"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "Real power output from a generator  with respect to its excitation: ____",
+            "options": [
+                "directly proportional",
+                "inversely proportional",
+                "it remains unchanged",
+                "excitation is fixed and cannot be changed"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Charging current in the transmission line _____",
+            "options": [
+                "lags the voltage by 90 degrees",
+                " leads the voltage by 45 degrees",
+                "leads the voltage by 90 degrees",
+                "leads the voltage by 180 degrees"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Why are shunt reactors connected at receiving end of long transmission line system?",
+            "options": [
+                "To increase terminal voltage",
+                "To compensate voltage rise caused by capacitive charging at light load",
+                "To improve power factor",
+                "To reduce the fault current"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "Safety Interlocks in Control schemes are:\na) Isolator Open/Close possible only if CB is open \nb) E/S closing possible only when isolator is open",
+            "options": [
+                "(a) only",
+                "(b) only",
+                "both (a) and (b)",
+                "Neither (a) nor (b)"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Match the device numbers of relays: (a)distance  (b) instantaneous over current  (c) time delayed overcurrent  (d) differential :: (1) 21; (2) 87; (3) 51; (4) 50",
+            "options": [
+                "a-1;b-2;c-3;d-4;",
+                "a-1; b-4; c-3; d-2",
+                "a-4; b-3; c-1; d-2;",
+                "a-3; b-2; c-1; d-4;"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The inrush current in a transformer contains predominantly",
+            "options": [
+                "7th  harmonic ",
+                "2nd harmonic",
+                "5th Harmonic",
+                "3rd harmonic"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "Dead time for autoreclose is:",
+            "options": [
+                "1 minute",
+                "1 sec",
+                "5 minute",
+                "10 milli sec"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The time delay for Zone-3 in distance protection is:",
+            "options": [
+                "100-200 ms",
+                "350-400ms",
+                "1000-1200ms",
+                "0 ms"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Negative sequence Protection is used for: ",
+            "options": [
+                "Line ",
+                "Transformer ",
+                "Generator",
+                "Busbar"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "What Type of Auto-Reclosing arrangement is used in Indian Power System?",
+            "options": [
+                "High Speed Single pole reclosing (HSAR)",
+                "High Speed Three pole reclosing (HTAR)",
+                "Delayed Three Pole reclosing (DAR)",
+                "Delayed auto reclosing (DAR) with dead line (DL) and synchronism check (SC)"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "The loss of field of a generator results in generator ",
+            "options": [
+                "stalling",
+                "running as induction generator",
+                "running as synchronous motor",
+                "over speeding"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The extent of unbalance in the Generator / Motor currents are indicated by ______currents",
+            "options": [
+                "Positive sequence",
+                "Negative sequence ",
+                "Harmonic ",
+                "Saturation"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "The winding of the transformer which may be used for protection as well as for serving load is called the ________ winding",
+            "options": [
+                "Primary",
+                "Secondary",
+                "Tertiary",
+                "Auxiliary"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Generally, a highly conneted substation has _________fault level.",
+            "options": [
+                "High",
+                "Low",
+                "zero   ",
+                "Infinite"
+            ],
+            "correct": "A"
+        },
+        {
+            "question": "What is \"NOT\" an advantage of the switching substation?",
+            "options": [
+                "Avoid switching surges",
+                "Easy segregation of faulty zones",
+                "Can be used as a pooling point",
+                "Feeding power to the local area"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "What is the primary function of earth mat in a substation?",
+            "options": [
+                "To act as a foundation for all equipments",
+                "To act as a deterrent to rodents ",
+                "To limit step and touch potential for substation staff ",
+                "Provide a high impedance path to the fault currents"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Surge arresters are provided to",
+            "options": [
+                "Limit the fault \ncurrent",
+                "To limit the voltage",
+                "To divert lightning surges to ground",
+                "To absorb switching, lighting surges and discharge"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "In a substation all non current carrying parts shall be connected to",
+            "options": [
+                "Adjacent \nequipment",
+                "Separate Earth \nelectrodes",
+                "Earth mat",
+                "Need not be earthed"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Scada Functions are: ",
+            "options": [
+                "Data Acquisition",
+                "Data Processing",
+                "Alarms",
+                "All of the above"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "Define the range of values that SCADA uses to determine whether the value retrieved for the analog is realistic.",
+            "options": [
+                "Normal limit",
+                "Reasonability Limit",
+                "Forbidden Limit",
+                "Dead band Limits"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "What  type of flag appears when data is uninitialised ?",
+            "options": [
+                "Good ",
+                "Suspect",
+                "Calculated",
+                "Garbage"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "Breaker and switch status, Line analog parameters,Transformer analog parameters are the types of _____",
+            "options": [
+                "Distribution Data",
+                "Power Plant Data",
+                "Substation Data",
+                "System Operational Data"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "Historical data recording allows you to preserve time series of ____",
+            "options": [
+                "Analog",
+                "Digital",
+                "Both Analog and digital",
+                "only counter data"
+            ],
+            "correct": "C"
+        },
+        {
+            "question": "The assumption in Real Time Power system application of State Estimation are:",
+            "options": [
+                "Voltage and current waveform are purely sinusoidal",
+                "Balanced 3 Ph System",
+                "3 Ph. System described by positive sequence network",
+                "All of these"
+            ],
+            "correct": "D"
+        },
+        {
+            "question": "Which of the following is not taken as an input by the State Estimator application?",
+            "options": [
+                "Voltage",
+                "Frequency",
+                "Reactive Power",
+                "Active Power"
+            ],
+            "correct": "B"
+        },
+        {
+            "question": "Which forecasting is useful in real-time operations?",
+            "options": [
+                "Short Term Forecasting",
+                "Medium Term Forecasting",
+                "Long Term Forecasting",
+                "Very long term"
+            ],
+            "correct": "A"
         }
 ];
 
