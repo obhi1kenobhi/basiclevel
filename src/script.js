@@ -4006,19 +4006,32 @@ const submitbtn = document.getElementById("submit-btn");
 const randombtn = document.getElementById("random-btn");
 const descriptor = document.getElementById("description");
 const resultpane = document.getElementById("result");
-var randomquestions = [];
+// var questionbank = [];
+
+function shuffle(questionbank) {
+    let currentIndex = questionbank.length;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [questionbank[currentIndex], questionbank[randomIndex]] = [
+        questionbank[randomIndex], questionbank[currentIndex]];
+    }
+  }
+  
 
 const randomgenerator = () => {
-    randomquestions = [];
     resultpane.classList.remove("bg-alertyellow", "text-red");
     resultpane.innerText = ``;
-    for (let n = 0; n < 50; n++){
-
-        randomquestions.push(questionbank[Math.floor(Math.random() * questionbank.length)]);
-    }
+    shuffle(questionbank);
     descriptor.innerHTML = ``;
     questionContainer.innerHTML = ``;
-    randomquestions.forEach((q, index) => {
+    questionbank.forEach((q, index) => {
         const questionDiv = document.createElement("div");
         questionDiv.classList.add("question");
         questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
@@ -4046,7 +4059,7 @@ function submitQuiz() {
     // console.log(questionbank.length);
     let score = 0;
     document.querySelectorAll(".options label").forEach(label => label.classList.remove("correct-answer", "wrong-answer"));
-    randomquestions.forEach((q, index) => {
+    questionbank.forEach((q, index) => {
         const selected = document.querySelector(`input[name=q${index}]:checked`);
         const labels = document.querySelectorAll(`input[name=q${index}]`);
         if (selected) {
@@ -4065,7 +4078,7 @@ function submitQuiz() {
         });
     });
     resultpane.classList.add("bg-alertyellow", "text-red");
-    resultpane.innerText = `You scored ${score} out of ${randomquestions.length}`;
+    resultpane.innerText = `You scored ${score} out of ${questionbank.length}`;
 }
 randombtn.addEventListener("click",randomgenerator);
 submitbtn.addEventListener("click",submitQuiz);
